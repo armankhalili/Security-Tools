@@ -11,7 +11,7 @@ data=[]    # 👈to store all attribute of certain access piont
 num = 1    # 👈to count number of the table row
 
 # store date and time to generate file name ↩️
-# 👇and covert formate from "2021-11-05 03:42:16.500038.txt" to "2021-11-05_03:42:16.500038.txt"
+# 👇and covert formate from "2021-11-05 03:42:16.500038.txt" to "2021-11-05_03-42-16.500038.txt"
 now = str(datetime.now()).replace(" ","_").replace(":","-") 
 
 filename = str(now) + ".txt" #Generate file name 
