@@ -43,7 +43,7 @@ for name in ssid :
     command = "netsh wlan show profile \"{}\" key=clear".format(name)
 
     # 👇Get Data About Certain SSID
-    case = str(subprocess.check_output("netsh wlan show profile \"{}\" key=clear".format(name)).decode("utf-8")).split("\n")
+    case = str(subprocess.check_output("netsh wlan show profile \"{}\" key=clear".format(name)).decode("ascii")).split("\n")
     
     # 👇Write Key Content
 
