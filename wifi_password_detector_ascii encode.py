@@ -4,7 +4,7 @@ from prettytable import PrettyTable # 👈to create table for store data
 from datetime import datetime   # 👈to create uniqe filename
 
 # CMD command to get name of ssid
-temp_name = str(subprocess.check_output("netsh wlan show profile").decode("utf-8")).split("\n") 
+temp_name = str(subprocess.check_output("netsh wlan show profile").decode("ascii")).split("\n") 
 
 ssid = []  # 👈to store list SSID 
 data=[]    # 👈to store all attribute of certain access piont
