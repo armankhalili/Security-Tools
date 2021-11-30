@@ -46,12 +46,24 @@ for name in ssid :
     case = str(subprocess.check_output("netsh wlan show profile \"{}\" key=clear".format(name)).decode("utf-8")).split("\n")
     
     # 👇Write Key Content
-    password = (case[32].split(":"))[1]
-    data.append(password[:-2])
+
+    # 👇detect all authentication and seprate password and store in password variable
+    if len((case[32].split(":"))) > 1 :
+        password = (case[32].split(":"))[1]
+        data.append(password[:-2])
+
+    # anything else be open  authentication which is have no password so our list have less than 2 index ↩️
+    # 👇To handling open authentication which is password variable equal to "" (replace "" by "NULL")
+    else :
+            data.append("NULL")
 
     # 👇Write Authentication Type
     authentication = (case[29].split(":"))[1]
-    data.append(authentication[:-2])
+    # To handling open authentication (replace "absent" by "No authentication (open)")
+    if len(authentication[:-2]) == 6 :
+        data.append("No authentication (open)")
+    else :
+        data.append(authentication[:-2])
 
     # 👇Insert list of Data in one tables row
     mytable.add_row(data)
